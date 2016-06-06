@@ -15,11 +15,20 @@ public class LoginAction extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
+
         LoginForm loginForm = (LoginForm) form;
-        if (loginForm.getUserName().equals(loginForm.getPassword())) {
+        if (mapping.getParameter().equals("clear")) {
+            loginForm.setUserName("");
+            loginForm.setPassword("");
             return mapping.findForward(SUCCESS);
         } else {
-            return mapping.findForward(FAILURE);
+            if (loginForm.getUserName().equals(loginForm.getPassword())) {
+                Thread.sleep(5000);
+                return mapping.findForward(SUCCESS);
+            } else {
+                return mapping.findForward(FAILURE);
+            }
         }
+
     }
 }

@@ -20,10 +20,15 @@
     </global-forwards>
 
     <action-mappings>
-        <action input="/login.jsp" name="LoginForm" path="/Login" scope="session" type="com.asy.test.struts.LoginAction" validate="true">
+        <action parameter="clear" name="LoginForm" path="/Login/start" scope="session" type="com.asy.test.struts.LoginAction" validate="false">
+            <forward name="success" path="/login.jsp" />
+        </action>
+
+        <action parameter="login" input="/login.jsp" name="LoginForm" path="/Login" scope="session" type="com.asy.test.struts.LoginAction" validate="true">
             <forward name="success" path="/success.jsp" />
             <forward name="failure" path="/failure.jsp" />
         </action>
+
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
     </action-mappings>
     
