@@ -21,23 +21,19 @@ public class LoginForm extends org.apache.struts.action.ActionForm {
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
         ActionErrors errors = new ActionErrors();
         if (userName == null || userName.length() < 1) {
-            errors.add("userName", new ActionMessage("error.userName.required"));
-            // TODO: add 'error.name.required' key to your resources
+            errors.add("userName", new ActionMessage("error.name.required"));
         }
         if (password == null || password.length() < 1) {
             errors.add("password", new ActionMessage("error.password.required"));
-            // TODO: add 'error.name.required' key to your resources
         }
         return errors;
     }
 
     public String getUserName() {
-        logger.info("Inside getter "+userName);
         return userName;
     }
 
     public void setUserName(String userName) {
-        logger.info("Inside setter "+userName);
         this.userName = userName;
     }
 
